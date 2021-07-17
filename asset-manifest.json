@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.js": "/slack-block-builder-viewer/static/js/main.b3290817.chunk.js",
+    "main.js.map": "/slack-block-builder-viewer/static/js/main.b3290817.chunk.js.map",
+    "runtime-main.js": "/slack-block-builder-viewer/static/js/runtime-main.f7f27190.js",
+    "runtime-main.js.map": "/slack-block-builder-viewer/static/js/runtime-main.f7f27190.js.map",
+    "static/css/2.0d8cb1d1.chunk.css": "/slack-block-builder-viewer/static/css/2.0d8cb1d1.chunk.css",
+    "static/js/2.3c70affd.chunk.js": "/slack-block-builder-viewer/static/js/2.3c70affd.chunk.js",
+    "static/js/2.3c70affd.chunk.js.map": "/slack-block-builder-viewer/static/js/2.3c70affd.chunk.js.map",
+    "index.html": "/slack-block-builder-viewer/index.html",
+    "static/css/2.0d8cb1d1.chunk.css.map": "/slack-block-builder-viewer/static/css/2.0d8cb1d1.chunk.css.map",
+    "static/js/2.3c70affd.chunk.js.LICENSE.txt": "/slack-block-builder-viewer/static/js/2.3c70affd.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f7f27190.js",
+    "static/css/2.0d8cb1d1.chunk.css",
+    "static/js/2.3c70affd.chunk.js",
+    "static/js/main.b3290817.chunk.js"
+  ]
+}
