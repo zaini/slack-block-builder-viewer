@@ -1,6 +1,6 @@
 import { useState } from "react"
 import CodeEditor from "./components/CodeEditor"
-import { Message, Blocks, Elements } from 'slack-block-builder';
+import { Message, Blocks, Elements, HomeTab, Modal } from 'slack-block-builder';
 
 const code = `
 Message()
@@ -34,8 +34,8 @@ const App = () => {
 
   const evaluateCode = () => {
     try {
-      const x = eval(`(function a(Message, Blocks, Elements) { const code = ${value}; const json = code.buildToJSON(); const preview = code.printPreviewUrl(); return [json, preview]; })`)
-      const [json, preview] = x(Message, Blocks, Elements)
+      const x = eval(`(function a(Message, Blocks, Elements, HomeTab, Modal) { const code = ${value}; const json = code.buildToJSON(); const preview = code.printPreviewUrl(); return [json, preview]; })`)
+      const [json, preview] = x(Message, Blocks, Elements, HomeTab, Modal)
       const blocks = JSON.parse(json)["blocks"]
 
       const q = new URLSearchParams()
@@ -44,6 +44,7 @@ const App = () => {
       setPreviewLink(`https://api.slack.com/tools/block-kit-builder?${q}`)
 
       setResult(json)
+      setError("")
     } catch (error) {
       setResult("")
       setError(`${error}`)
