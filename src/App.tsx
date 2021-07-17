@@ -34,16 +34,16 @@ const App = () => {
 
   const evaluateCode = () => {
     try {
-      const x = eval(`(function a(Message, Blocks, Elements) { const res = ${value}.buildToJSON(); return res; })`)
-      const res = x(Message, Blocks, Elements)
-      const blocks = JSON.parse(res)["blocks"]
+      const x = eval(`(function a(Message, Blocks, Elements) { const code = ${value}; const json = code.buildToJSON(); const preview = code.printPreviewUrl(); return [json, preview]; })`)
+      const [json, preview] = x(Message, Blocks, Elements)
+      const blocks = JSON.parse(json)["blocks"]
 
       const q = new URLSearchParams()
       q.append('blocks', JSON.stringify(blocks))
       q.append('mode', 'message')
       setPreviewLink(`https://api.slack.com/tools/block-kit-builder?${q}`)
 
-      setResult(res)
+      setResult(json)
     } catch (error) {
       setResult("")
       setError(`${error}`)
