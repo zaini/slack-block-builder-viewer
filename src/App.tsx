@@ -2,38 +2,33 @@ import { useState } from "react"
 import CodeEditor from "./components/CodeEditor"
 import { Message, Blocks, Elements } from 'slack-block-builder';
 
-const test = `
-const x = () => {
-  return Message({ channel, text: 'Alas, my friend.' }).blocks(
-    Blocks.Section({ text: 'One does not simply walk into Slack and click a button.' }),
-    Blocks.Section({ text: 'At least that\'s what my friend Slackomir said :crossed_swords:' }
-    ).buildToJSON()
-}
-`;
-
 const code = `console.log("howdy")`
 
-const evaluateCode = () => {
-  const evaluation = eval(`${test}`)
-  console.log("" + evaluation)
-}
-
 const App = () => {
-  const [value, setValue] = useState(test)
+  const [value, setValue] = useState(code)
   const [result, setResult] = useState("")
+
+  const evaluateCode = () => {
+    try {
+      let x = eval(`(function a(Message, Blocks, Elements) { return ${value}.buildToJSON() })`)
+      setResult(x(Message, Blocks, Elements))
+    } catch (error) {
+      setResult(`${error}`)
+    }
+  }
 
   return (
     <div>
-      slack-block-builder-viewer
+      <h1>slack-block-builder-viewer</h1>
       <CodeEditor value={value} setValue={setValue} />
 
       <br />
 
-      <button onClick={evaluateCode}>evaluate code</button>
+      <button onClick={evaluateCode}>evaluate</button>
 
       <br />
 
-      result
+      <h2>result</h2>
       {result}
     </div>
   )

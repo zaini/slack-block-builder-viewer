@@ -4,8 +4,6 @@ import { highlight, languages } from 'prismjs';
 const CodeEditor = ({ value, setValue }: { value: string, setValue: React.Dispatch<React.SetStateAction<string>> }) => {
     return (
         <div>
-            editor
-
             <Editor
                 value={value}
                 onValueChange={(code: string) => setValue(code)}
