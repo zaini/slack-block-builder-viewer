@@ -1,6 +1,11 @@
 import { useState } from "react"
 import CodeEditor from "./components/CodeEditor"
 import { Message, Blocks, Elements } from 'slack-block-builder';
+import { UnControlled as CodeMirror } from 'react-codemirror2'
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/material.css';
+require('codemirror/mode/xml/xml');
+require('codemirror/mode/javascript/javascript');
 
 const code = `
 Message()
@@ -53,7 +58,20 @@ const App = () => {
   return (
     <div>
       <h1>slack-block-builder-viewer</h1>
-      <CodeEditor language="js" value={value} setValue={setValue} />
+      {/* <CodeEditor language="js" value={value} setValue={setValue} /> */}
+
+      <br />
+
+      <CodeMirror
+        value='<h1>I ♥ react-codemirror2</h1>'
+        options={{
+          mode: 'xml',
+          theme: 'material',
+          lineNumbers: true
+        }}
+        onChange={(editor, data, value) => {
+        }}
+      />
 
       <br />
 
@@ -67,7 +85,7 @@ const App = () => {
 
       <br />
 
-      <CodeEditor language="json" value={result} />
+      {/* <CodeEditor language="json" value={result} /> */}
 
       <br />
 
