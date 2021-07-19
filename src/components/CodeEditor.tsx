@@ -20,6 +20,9 @@ const CodeEditor = ({ language, value, setValue }: { language: string, value: st
                 style={{
                     fontFamily: '"Fira code", "Fira Mono", monospace',
                     fontSize: 16,
+                    backgroundColor: "#F6F6F6",
+                    margin: "2rem",
+                    border: "1px solid black"
                 }}
             />
         </div>

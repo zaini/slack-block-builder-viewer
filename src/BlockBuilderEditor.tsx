@@ -1,3 +1,4 @@
+import { Alert, AlertDescription, AlertTitle, Box, Button, Grid, GridItem, Heading, Link, Stack } from "@chakra-ui/react"
 import { useState } from "react"
 import CodeEditor from "./components/CodeEditor"
 import { evaluateBlocks } from "./utils/utils"
@@ -45,29 +46,35 @@ const BlockBuilderEditor = () => {
   }
 
   return (
-    <div>
-      <h1>slack-block-builder-viewer</h1>
-      <CodeEditor language="js" value={value} setValue={setValue} />
+    <Box>
+      <Heading textAlign="center" mt="2rem">slack-block-builder-viewer</Heading>
+      <Heading textAlign="center" mt="0.5rem" size="md">Generate JSON for the Slack Block Kit using <Link style={{ textDecoration: "underline" }} href="https://github.com/raycharius/slack-block-builder">slack-block-builder</Link></Heading>
 
-      <br />
+      <Grid p="5">
+        <GridItem>
+          <Heading size="lg">REPL</Heading>
+          <CodeEditor language="js" value={value} setValue={setValue} />
+        </GridItem>
 
-      <button onClick={evaluateCode}>evaluate</button>
+        <Stack>
+          <Button colorScheme="green" onClick={() => evaluateCode()}>Generate JSON</Button>
 
-      <br />
+          <Button as={Link} href={previewLink} colorScheme="blue" style={{ textDecoration: "none" }}>View on Block Kit Builder</Button>
 
-      <h2>result</h2>
+          {error && <Alert status="error" textAlign="center">
+            <AlertTitle>Error:</AlertTitle>
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>}
+        </Stack>
 
-      <a href={previewLink}>view on slack block builder</a>
+        <br />
 
-      <br />
-
-      <CodeEditor language="json" value={result} />
-
-      <br />
-
-      {error && [<h2>error</h2>, error]}
-
-    </div>
+        <GridItem>
+          <Heading size="lg">JSON Output</Heading>
+          <CodeEditor language="json" value={result} />
+        </GridItem>
+      </Grid>
+    </Box>
   )
 }
 
