@@ -18,3 +18,11 @@ Another similar tool from MD to Slack: https://codesandbox.io/s/markdown-to-slac
 * No tests
 
 * Generating the links differently from printPreviewUrl
+
+## Todo
+
+* Add copy to clipboard
+
+* Update to use getPreviewUrl
+
+* Reformat the JSON result
